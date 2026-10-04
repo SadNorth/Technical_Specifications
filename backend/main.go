@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"net/http"
+	"os"
 )
 
 type HealthResponse struct {
@@ -15,7 +16,11 @@ func main() {
 	// http.HandleFunc("/", handler)
 	http.HandleFunc("/health", healthHandler)
 
-	http.ListenAndServe(":8080", nil)
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+	http.ListenAndServe(":"+port, nil)
 }
 
 // func handler(w http.ResponseWriter, r *http.Request) {
