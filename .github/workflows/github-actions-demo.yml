@@ -29,3 +29,9 @@ jobs:
             - name: Build application
               working-directory: backend
               run: go build -o technical_spec_api .
+
+            - name: Deploy to Vercel
+              if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+              env:
+                VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+              run: npx vercel --prod --token $VERCEL_TOKEN
