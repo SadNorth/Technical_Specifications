@@ -1,0 +1,14 @@
+# Go build
+
+*.exe
+*.out
+/bin/
+
+# IDE
+.vscode/
+.idea/
+
+# OS 
+
+.DS_Store
+Thumbs.db
